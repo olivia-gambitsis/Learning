@@ -1,26 +1,58 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchFruits } from '../actions'
+import { fetchTrees} from '../actions'
 
 export class App extends React.Component {
-  state = {
-    fruits: []
+  state={
+    isFlipped:false,
   }
+
+
 
   componentDidMount () {
-    this.props.dispatch(fetchFruits())
+    this.props.dispatch(fetchTrees())
   }
 
-  render () {
-    return (
-      <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {this.props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+
+  clickHandlerForFlashCard = ()=>{
+    this.setState({
+      isFlipped: true
+    }) 
+  }
+
+  doubleClickHandlerForFlashCard = () =>{
+    this.setState({
+      isFlipped: false
+    })
+  }
+     
+     
+    
+    
+    render () {
+      return (
+        <div>
+        {/* <div onClick = {this.clickHandlerForFlashCard} onDoubleClick = {this.doubleClickHandlerForFlashCard}className ='flashCard'>
+          {this.props.trees.map((tree) => {
+            return(
+              this.state.isFlipped? <h2 key={tree.id}>{tree[0].name}</h2> : <img key={tree.id} src={tree.image}/> 
+            )
+          })} 
+      </div> */}
+      <div  onClick = {this.clickHandlerForFlashCard} onDoubleClick = {this.doubleClickHandlerForFlashCard} >
+        {this.props.trees.filter(tree => tree.id === Math.floor(Math.random()* this.props.trees.length)+1).map((tree) => {
+        return(
+          <div key={tree.id}>
+           {this.state.isFlipped ? <img src={tree.image}/> : <h2>{tree.name}</h2>}
+          </div>
+        )
+      })}
+      </div>
+
+
+
+      
       </div>
     )
   }
@@ -28,8 +60,9 @@ export class App extends React.Component {
 
 function mapStateToProps (globalState) {
   return {
-    fruits: globalState.fruits
+    trees: globalState.trees
   }
 }
 
 export default connect(mapStateToProps)(App)
+
