@@ -30,7 +30,7 @@ class Learn extends React.Component {
   }
 
   increaseCounter = () =>{
-    console.log('updating counter')
+    
     if (this.state.counter == this.props.trees.length -1){
       this.setState({
         counter: 0
@@ -63,17 +63,20 @@ class Learn extends React.Component {
     render () {
 
       const tree = this.props.trees[this.state.counter]
-      console.log(tree, this.props.trees)
 
       return (
+        <>
+        <Link to={'/'}>Home</Link>
         <div className='learn'>
           
           <div className='flashCard'  onClick = {this.clickHandlerForFlashCard} onDoubleClick = {this.doubleClickHandlerForFlashCard} >
+            
             {tree && this.renderTree(tree)}
           </div>
-          <button onClick={this.reduceCounter}>Last Card</button>
-          <button onClick={this.increaseCounter}>Next Card</button>
+          <button className='leftButton' onClick={this.reduceCounter}>Last Card</button>
+          <button className='rightButton' onClick={this.increaseCounter}>Next Card</button>
         </div>
+        </>
     )
   }
 }

@@ -9,10 +9,11 @@ class Nav extends React.Component {
   
   render(){
     return(
-      <div className='Nav'>
-       <Link to={'/learn'}>Start Learning!</Link>
-       <Link to={'/'}>Home</Link>
-      </div>
+      // <div className='Nav'>
+      //  <Link to={'/'}>Home</Link>
+      // </div>
+      <>
+      </>
     )
 
   }
