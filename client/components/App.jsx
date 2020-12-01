@@ -33,13 +33,6 @@ export class App extends React.Component {
     render () {
       return (
         <div>
-        {/* <div onClick = {this.clickHandlerForFlashCard} onDoubleClick = {this.doubleClickHandlerForFlashCard}className ='flashCard'>
-          {this.props.trees.map((tree) => {
-            return(
-              this.state.isFlipped? <h2 key={tree.id}>{tree[0].name}</h2> : <img key={tree.id} src={tree.image}/> 
-            )
-          })} 
-      </div> */}
       <div  onClick = {this.clickHandlerForFlashCard} onDoubleClick = {this.doubleClickHandlerForFlashCard} >
         {this.props.trees.filter(tree => tree.id === Math.floor(Math.random()* this.props.trees.length)+1).map((tree) => {
         return(
