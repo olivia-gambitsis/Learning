@@ -16,13 +16,11 @@ body {
   display:grid;
   grid-template-columns: [start]33%[line1] 33%[line2] 33% [end];
   grid-template-rows: [start]33vh[line1] 30vh[line2] 33vh[end];
-  
-}
-
-.home-background{
   background-image: url("https://eskipaper.com/images/tree-wallpaper-16.jpg");
   background-size: cover;
+ 
 }
+
 
 .title{
   grid-column-start: line1;
@@ -63,6 +61,7 @@ a:visited{
   display:grid;
   grid-template-columns: [start]33%[line1] 33%[line2] 33% [end];
   grid-template-rows: [start]33vh[line1] 30vh[line2] 33vh[end];
+  z-index: 1;
   
 }
 
