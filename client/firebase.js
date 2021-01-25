@@ -1,10 +1,8 @@
+// /app imports only the base features rather than all features from the firebase library
+import firebase from 'firebase/app'
 
-import firebase from "firebase/app"
-
-import StyledFirebaseAuth from 'react-firebaseui'
-
-
-import "firebase/firestore"
+//import 'firebase/firestore'
+import 'firebase/auth'
 
 const firebaseConfig ={
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,14 +13,25 @@ const firebaseConfig ={
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 }
 
-export const app = firebase.initializeApp(firebaseConfig)
-export const auth = app.auth()
+ 
+  // Initialize Firebase allows this react project to connect to the firebase project
+  const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+  export const authRef = firebaseApp.auth()
+  
+  //firebase.firestore.settings({timestampsInSnapshots:true})
+
+  export default firebase;
+  
 
 
 
-REACT_APP_FIREBASE_API_KEY = AIzaSyCAhzPewvB8uFrGIt97A3-xuqx7Wj1fotY
-REACT_APP_FIREBASE_AUTH_DOMAIN = quiz-me-25fce.firebaseapp.com
-REACT_APP_FIREBASE_PROJECT_ID =quiz-me-25fce
-REACT_APP_FIREBASE_STORAGE_BUCKET =quiz-me-25fce.appspot.com
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID =593572213930
-REACT_APP_FIREBASE_APP_ID = 1:593572213930:web:87d35fa3ad356dbe6eccd3
+ // Your web app's Firebase configuration
+//  var firebaseConfig = {
+//     apiKey: "AIzaSyCAhzPewvB8uFrGIt97A3-xuqx7Wj1fotY",
+//     authDomain: "quiz-me-25fce.firebaseapp.com",
+//     projectId: "quiz-me-25fce",
+//     storageBucket: "quiz-me-25fce.appspot.com",
+//     messagingSenderId: "593572213930",
+//     appId: "1:593572213930:web:87d35fa3ad356dbe6eccd3"
+//   };

@@ -17,8 +17,7 @@ class Home extends React.Component {
           <h1>Home</h1>  
        </div>
        <div className='start-learning'>
-          <h4>CLick <Link to={'/learn'}>HERE</Link> To Start Learning!</h4>
-          <Learn/>
+          <h4>Click <Link to={'/learn'}>HERE</Link> To Start Learning!</h4>
        </div>
       </div>
       
