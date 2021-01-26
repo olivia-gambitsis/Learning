@@ -27,7 +27,7 @@ export function fetchTrees () {
 export function setUser (user) {
   return {
     type: SET_USER,
-    user
+    user:user
   }
 }
 
@@ -37,8 +37,8 @@ export function register (email, password) {
   return dispatch => {authRef.createUserWithEmailAndPassword(email, password)
   .then( user =>{
    dispatch(setUser(
-     {userID:user.uid,
-      email: user.email
+     {userID:user.user.uid,
+      email: user.user.email
   }))
   return user
   })
@@ -49,13 +49,13 @@ export function register (email, password) {
 }
 
 export function login (email, password) {
-  return dispatch => {authRef.signInWithEmailAndPassword(email, password)
-  .then(user =>{
-    dispatch(setUser({
-      userID:user.uid,
-      email:user.email
-    }))
-    return user
+  return dispatch => {
+    authRef.signInWithEmailAndPassword(email, password)
+    .then(user =>{
+      dispatch(setUser({
+        userID:user.user.uid,
+        email:user.user.email
+      }))
   })
   .catch(error =>{
     console.log(error)
