@@ -25,6 +25,7 @@ export class Register extends Component {
         console.log(this.state)
         if(this.state.password === this.state.confirmPassword){
             this.props.dispatch(register(this.state.email, this.state.password))
+            this.props.history.push('/home') 
           
         }else{
             alert ('your passwords do not match, please try again')
@@ -36,7 +37,7 @@ export class Register extends Component {
     render() {
         return (
             <div>
-                <h1>Register</h1>
+                <h2>Register</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" 
                         id='email'

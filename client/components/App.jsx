@@ -3,13 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-import Home from './Home'
 import Learn from './Learn'
 import Nav from './Nav'
-import Register from './Register'
-
-import firebase from 'firebase/app'
-import Login from './Login'
+import Landing from './Landing'
 
 
 
@@ -22,16 +18,19 @@ class App extends React.Component {
     return(
       <div>
         <Route path ='/' component={Nav}/>
-        <Route exact path ='/' component={Home}/>
+        <Route exact path = '/' component={Landing}/>
         <Route exact path ='/learn' component={Learn}/>
-        <Route path ='/' component={Register}/>
-        <Route path = '/' component={Login}/>
       </div>
     )
 
   }
 }
+function mapStateToProps (globalState) {
+  return {
+    isAuthenticated: globalState.isAuthenticated
+  }
+}
 
-export default connect()(App)
+export default connect(mapStateToProps)(App)
 
 

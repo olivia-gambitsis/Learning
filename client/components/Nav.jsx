@@ -7,18 +7,32 @@ import {logout} from '../actions/index'
 
 class Nav extends React.Component {
 
+  logUserOut = () =>{
+    logout()
+    this.props.history.push('/')
+  }
+
   
   render(){
     return(
       <>
-      <button id='signOut' onClick={logout()}>Logout</button>
+       {this.props.isAuthenticated &&  <button id='signOut' onClick={this.logUserOut}>Logout</button>}
       </>
     )
 
   }
 }
 
-export default connect()(Nav)
+function mapStateToProps (globalState) {
+  return {
+    isAuthenticated: globalState.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(Nav)
+
+
+
 
 
 

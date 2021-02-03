@@ -20,7 +20,7 @@ export class Login extends Component {
     handleSubmit =(e) =>{
         e.preventDefault()
         console.log(this.state)
-        this.props.dispatch(login(this.state.email, this.state.password))  
+        this.props.dispatch(login(this.state.email, this.state.password)) 
     }
  
 
@@ -28,7 +28,7 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <h1>Login</h1>
+                <h2>Login</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" 
                         id='email'
