@@ -24,8 +24,8 @@ export class Register extends Component {
         e.preventDefault()
         console.log(this.state)
         if(this.state.password === this.state.confirmPassword){
-            this.props.dispatch(register(this.state.email, this.state.password))
-            this.props.history.push('/home') 
+            this.props.dispatch(register(this.state.email, this.state.password, this.state.userName))
+            this.props.history.push('/profile') 
           
         }else{
             alert ('your passwords do not match, please try again')

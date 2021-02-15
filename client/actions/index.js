@@ -48,6 +48,7 @@ export function setUser (user) {
 }
 
 export const removeUser = () => {
+  console.log('removeUser')
   return {
     type: REMOVE_USER,
   }
@@ -60,7 +61,7 @@ export function register (email, password) {
   .then( user =>{
    dispatch(setUser(
      {userID:user.user.uid,
-      email: user.user.email
+      email: user.user.email,
   }))
   })
   .then(()=> dispatch(isAuthenticated(true)))
@@ -89,7 +90,7 @@ export function login (email, password) {
 
 export const fetchUser = () => {
   return dispatch => {
-    auth.onAuthStateChanged(user => {
+    authRef.onAuthStateChanged(user => {
       if(user) {
         dispatch(setUser({
           uid: user.uid,
@@ -102,11 +103,15 @@ export const fetchUser = () => {
   }
 }
 
+
+
+
 export function logout () {
   return dispatch => {
     authRef.signOut()
     .then(() => dispatch(isAuthenticated(null)))
     .then (() => dispatch(removeUser({})))
+    .then(() => dispatch(authIsLoaded(false)))
   }
 }
 

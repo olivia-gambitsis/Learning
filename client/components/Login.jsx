@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import firebase from 'firebase/app'
 import {login} from '../actions/index'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-export class Login extends Component {
+
+
+class Login extends React.Component {
     state={
         email:'',
         password:'',
@@ -12,7 +15,7 @@ export class Login extends Component {
 
     handleChange = (e)=>{
         this.setState({
-            [e.target.id]:e.target.value
+            [e.target.name]:e.target.value
         })
 
     }
@@ -20,7 +23,11 @@ export class Login extends Component {
     handleSubmit =(e) =>{
         e.preventDefault()
         console.log(this.state)
-        this.props.dispatch(login(this.state.email, this.state.password)) 
+       
+        
+        this.props.dispatch(login(this.state.email, this.state.password))
+        this.props.history.push("/profile")
+   
     }
  
 
@@ -31,14 +38,16 @@ export class Login extends Component {
                 <h2>Login</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" 
-                        id='email'
+                        id='emailLogin'
                         placeholder='email' 
+                        name='email'
                         onChange={this.handleChange}
                         value={this.state.email}
                     />
                     <input type="password" 
-                        id='password'
+                        id='passwordLogin'
                         placeholder='password'
+                        name='password'
                         onChange={this.handleChange}
                         value={this.state.password}
 
@@ -48,6 +57,7 @@ export class Login extends Component {
                         value='Login'
                     />
                 </form>
+                <Link to={'/profile'}>profile page</Link>
                 
             </div>
         )

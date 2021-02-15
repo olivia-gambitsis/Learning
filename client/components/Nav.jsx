@@ -8,7 +8,7 @@ import {logout} from '../actions/index'
 class Nav extends React.Component {
 
   logUserOut = () =>{
-    logout()
+    this.props.dispatch(logout())
     this.props.history.push('/')
   }
 
